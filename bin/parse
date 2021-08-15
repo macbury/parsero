@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require_relative '../lib/parsero'
+
+begin
+  Parsero::Cli.call(ARGF)
+rescue ServiceFailure => e
+  $stderr.write e.to_s
+  exit 1
+end
